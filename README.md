@@ -142,7 +142,7 @@ $ mysql -uroot -pPassword@9
 $ exit
 ```
 
-## インストールと画面の操作
+### インストールと画面操作
 ```
 git clone https://github.com/kaku-m/test-project.git
 cd test-project
@@ -163,7 +163,7 @@ https://192.168.33.10:3333/ にアクセス
 画像マークを押下  
 「アップロードする」を押下  
 1MB以下のjpegまたはpng画像を選択  
-アップロードした画像を選択して「挿入する」を押下  
+アップロードした画像を選択して「挿入」を押下  
 画面右上の「保存」を押下  
 
 編集　・・・編集ページに移動  
@@ -171,7 +171,9 @@ https://192.168.33.10:3333/ にアクセス
 移動　・・・親ページのIDを入力してページを移動する（子ページも全て）　※エラーチェック無し  
 削除　・・・子ページも全て削除する　※物理削除  
 
-## 参考（Nuxt構築）
+## 参考
+
+### create-nuxt-app
 ```
 $ npm init nuxt-app test-project
 # Project name:「そのままEnter押下」
@@ -188,6 +190,8 @@ $ npm init nuxt-app test-project
 # What is your GitHub username?「任意」
 # Version control system:「Git」
 ```
+
+### ホスト設定
 package.jsonのscripts.devを下記に変更  
 ```
 NUXT_HOST=192.168.33.10 NUXT_PORT=3333 nuxt
@@ -197,7 +201,7 @@ nuxt.config.jsのaxiosに下記を追加
 baseURL: 'https://192.168.33.13:3333/'
 ```
 
-ログイン機能の為  
+### ログイン機能の為
 ```
 $ npm install --save @nuxtjs/auth
 # npm install --save jsonwebtoken
@@ -207,9 +211,8 @@ nuxt.config.jsのmodulesに下記を追加
 '@nuxtjs/auth',
 ```
 storeフォルダにindex.jsを作成  
-参考）https://reffect.co.jp/vue/nuxt-js-auth-setting-with-backend  
 
-画面デザインの為  
+### 画面デザインの為
 ```
 $ npm install @nuxtjs/vuetify -D
 ```
@@ -217,9 +220,8 @@ nuxt.config.jsのbuildModulesに下記を追加
 ```
 '@nuxtjs/vuetify',
 ```
-参考）https://vuetifyjs.com/ja/getting-started/installation/  
 
-APIの実装とDB接続の為  
+### APIの実装とDB接続の為
 ```
 $ npm install --save express
 $ npm install --save mysql2
@@ -227,7 +229,7 @@ $ npm install --save multer
 ```
 staticフォルダにimagesフォルダ作成  
 
-https通信の為  
+### HTTPS通信の為
 ```
 $ npm install --save mkcert
 $ node_modules/mkcert/src/cli.js create-ca
@@ -243,7 +245,7 @@ server: {
 },
 ```
 
-wysiwygエディタの導入  
+### WYSIWYGエディタの導入
 ```
 npm install --save "@tinymce/tinymce-vue@^3"
 ```

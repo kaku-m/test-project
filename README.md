@@ -32,13 +32,13 @@ Port「22」
 Connection type:「SSH」  
 「Open」  
 PuTTY Security Alert「はい」  
-login as:「vagrant」  
-password:「vagrant」  
 ```
-$ su
-# Password:「vagrant」
+# login as:「vagrant」
+# password:「vagrant」
 
 # gitのインストール
+$ su
+# Password:「vagrant」
 $ yum install -y git
 $ exit
 

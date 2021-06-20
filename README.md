@@ -4,7 +4,7 @@
 
 ### 事前準備
 ・VirtualBoxのインストール  
-　https://www.virtualbox.org/
+　https://www.virtualbox.org/  
 ・Vagrantのインストール  
 　https://www.vagrantup.com/  
 ・PuTTYのインストール  
@@ -12,32 +12,31 @@
 
 ### 手順
 PowerShellまたはコマンドプロンプトを起動
-```bash
-# 適当なフォルダを作成
-mkdir MyVagrant/MyCentOS/
-cd MyVagrant/MyCentOS/
-vagrant init bento/centos-8.1
-vim ./Vagrantfile
+```
+> mkdir MyVagrant/MyCentOS/
+
+> cd MyVagrant/MyCentOS/
+
+> vagrant init bento/centos-8.1
+
+> vim ./Vagrantfile
 ```
 Vagrantfileの以下のコメントアウトを外す  
-config.vm.network "private_network", ip: "192.168.33.10"  
-
-
-
-
 ```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+config.vm.network "private_network", ip: "192.168.33.10"  
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+VMを起動  
+```bash
+> vagrant up
+```
+PuTTYを起動  
+Host Name「192.168.33.10」  
+Port「22」  
+Connection type:「SSH」  
+を入力して「Open」  
+PuTTY Security Alert「はい」  
+login as:「vagrant」  
+password:「vagrant」  
+```bash
+$
+```

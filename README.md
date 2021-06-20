@@ -3,22 +3,19 @@
 ## ローカル開発環境構築例（Windows）
 
 ### 事前準備
-・VirtualBoxのインストール  
-　https://www.virtualbox.org/  
-・Vagrantのインストール  
-　https://www.vagrantup.com/  
-・PuTTYのインストール  
-　https://www.putty.org/  
+VirtualBoxのインストール  
+https://www.virtualbox.org/  
+Vagrantのインストール  
+https://www.vagrantup.com/  
+PuTTYのインストール  
+https://www.putty.org/  
 
 ### 手順
 PowerShellまたはコマンドプロンプトを起動
 ```
 > mkdir MyVagrant/MyCentOS/
-
 > cd MyVagrant/MyCentOS/
-
 > vagrant init bento/centos-8.1
-
 > vim ./Vagrantfile
 ```
 Vagrantfileの以下のコメントアウトを外す  
@@ -33,7 +30,7 @@ PuTTYを起動
 Host Name「192.168.33.10」  
 Port「22」  
 Connection type:「SSH」  
-を入力して「Open」  
+「Open」  
 PuTTY Security Alert「はい」  
 login as:「vagrant」  
 password:「vagrant」  
@@ -64,7 +61,7 @@ $ nodebrew ls
 $ nodebrew use v14.16.1
 $ echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> /home/vagrant/.bash_profile
 
-# 設定反映
+# 設定の反映
 $ source ~/.bash_profile
 
 # MySQLのインストール
@@ -84,9 +81,10 @@ $ mysqld --version
 $ systemctl start mysqld
 $ systemctl status mysqld
 
-# MySQLの設定
 # パスワードの確認
 $ grep 'temporary password' /var/log/mysqld.log
+
+# MySQLの設定
 $ mysql_secure_installation
 # Enter password for user root:「確認したパスワードを入力」
 # New password:「Password@9」
@@ -100,18 +98,68 @@ $ mysql_secure_installation
 # Remove test database and access to it?:「n」
 # Reload privilege tables now?:「n」
 
-# テーブルの作成
+# データベースの作成
 $ mysql -uroot -pPassword@9
 > CREATE DATABASE test_db;
 > SHOW DATABASES;
 > USE test_db;
+
+# ページ管理テーブルの作成
 > CREATE TABLE pages (
-> id INT NOT NULL PRIMARY KEY,
-> path TEXT NOT NULL,
-> title VARCHAR(255) NOT NULL UNIQUE,
-> content TEXT,
-> created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-> updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+>   id INT NOT NULL PRIMARY KEY,
+>   path TEXT NOT NULL,
+>   title VARCHAR(255) NOT NULL UNIQUE,
+>   content TEXT,
+>   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+>   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 > );
+
+# 採番テーブルの作成
+> CREATE TABLE sequence (
+>   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+> ) engine = InnoDB;
+
+# ユーザー管理テーブルの作成
+> CREATE TABLE users (
+>   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+>   name VARCHAR(255) NOT NULL UNIQUE,
+>   password VARCHAR(255) NOT NULL,
+>   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+>   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+> );
+
+# 画像管理テーブルの作成
+> CREATE TABLE images (
+>   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+>   page_id INT NOT NULL,
+>   name VARCHAR(255) NOT NULL UNIQUE,
+>   path TEXT NOT NULL,
+>   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+>   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+> );
+> SHOW TABLES;
+> quit
+$ exit
 ```
+
+## インストールと画面操作
+```
+git clone https://github.com/kaku-m/test-project.git
+cd test-project
+npm install
+npm run dev
+```
+https://192.168.33.10:3333/ にアクセス  
+画面右上の「ログイン」を押下
+画面右上の「新規登録」を押下
+ユーザー名に「aaa」を入力
+パスワードに「aaa」を入力
+「登録する」を押下
+「ページ一覧へ」を押下
+画面右上の「新規」を押下
+「親ページのID」には何も入力しない
+「ページのタイトル」に「ページ1」を入力
+「作成」を押下
+画像マークを押下
+「アップロードする」を押下
 

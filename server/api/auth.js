@@ -64,7 +64,6 @@ app.get('/user', async (req, res) => {
  * ユーザー登録
  */
 app.post('/register', async (req, res) => {
-   console.log('testtttttttttttttttttttttttt')
   const username = req.body.username
   const password = req.body.password
   // データチェック

@@ -171,7 +171,23 @@ https://192.168.33.10:3333/ にアクセス
 移動　・・・親ページのIDを入力してページを移動する（子ページも全て）　※エラーチェック無し  
 削除　・・・子ページも全て削除する　※物理削除  
 
-## 参考（Nuxt.js構築）
+## 参考（Nuxt構築）
+```
+$ npm init nuxt-app test-project
+# Project name:「そのままEnter押下」
+# Programming language:「JavaScript」
+# Package manager:「Npm」
+# UI framework:「None」
+# Nuxt.js modules:「Axios」
+# Linting tools:「そのままEnter押下」
+# Testing framework:「None」
+# Rendering mode:「Universal（SSR / SSG）」
+# Deployment target:「Server（Node.js hosting）」
+# Development tools:「そのままEnter押下」
+# Development tools:「そのままEnter押下」
+# What is your GitHub username?「任意」
+# Version control system:「Git」
+```
 package.jsonのscripts.devを下記に変更  
 ```
 NUXT_HOST=192.168.33.10 NUXT_PORT=3333 nuxt
@@ -181,7 +197,7 @@ nuxt.config.jsのaxiosに下記を追加
 baseURL: 'https://192.168.33.13:3333/'
 ```
 
-ログイン機能実装の為  
+ログイン機能の為  
 ```
 $ npm install --save @nuxtjs/auth
 # npm install --save jsonwebtoken
@@ -203,21 +219,21 @@ nuxt.config.jsのbuildModulesに下記を追加
 ```
 参考）https://vuetifyjs.com/ja/getting-started/installation/  
 
-APIの実装とDB接続の為
+APIの実装とDB接続の為  
 ```
 $ npm install --save express
 $ npm install --save mysql2
 $ npm install --save multer
 ```
-staticフォルダにimagesフォルダ作成
+staticフォルダにimagesフォルダ作成  
 
-https通信の為
+https通信の為  
 ```
 $ npm install --save mkcert
 $ node_modules/mkcert/src/cli.js create-ca
 $ node_modules/mkcert/src/cli.js create-cert
 ```
-nuxt.config.jsに下記を追記
+nuxt.config.jsに下記を追記  
 ```
 server: {
   https: {
@@ -227,7 +243,7 @@ server: {
 },
 ```
 
-wysiwygエディタの導入
+wysiwygエディタの導入  
 ```
 npm install --save "@tinymce/tinymce-vue@^3"
 ```

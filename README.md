@@ -11,7 +11,7 @@ PuTTYのインストール
 https://www.putty.org/  
 
 ### 手順
-PowerShellまたはコマンドプロンプトを起動
+PowerShellまたはコマンドプロンプトを起動  
 ```
 > mkdir MyVagrant/MyCentOS/
 > cd MyVagrant/MyCentOS/
@@ -170,3 +170,64 @@ https://192.168.33.10:3333/ にアクセス
 作成　・・・ページのタイトルを入力して子ページを作成する　※エラーチェック無し  
 移動　・・・親ページのIDを入力してページを移動する（子ページも全て）　※エラーチェック無し  
 削除　・・・子ページも全て削除する　※物理削除  
+
+## 参考（Nuxt.js構築）
+package.jsonのscripts.devを下記に変更  
+```
+NUXT_HOST=192.168.33.10 NUXT_PORT=3333 nuxt
+```
+nuxt.config.jsのaxiosに下記を追加  
+```
+baseURL: 'https://192.168.33.13:3333/'
+```
+
+ログイン機能実装の為  
+```
+$ npm install --save @nuxtjs/auth
+# npm install --save jsonwebtoken
+```
+nuxt.config.jsのmodulesに下記を追加  
+```
+'@nuxtjs/auth',
+```
+storeフォルダにindex.jsを作成  
+参考）https://reffect.co.jp/vue/nuxt-js-auth-setting-with-backend  
+
+画面デザインの為  
+```
+$ npm install @nuxtjs/vuetify -D
+```
+nuxt.config.jsのbuildModulesに下記を追加  
+```
+'@nuxtjs/vuetify',
+```
+参考）https://vuetifyjs.com/ja/getting-started/installation/  
+
+APIの実装とDB接続の為
+```
+$ npm install --save express
+$ npm install --save mysql2
+$ npm install --save multer
+```
+staticフォルダにimagesフォルダ作成
+
+https通信の為
+```
+$ npm install --save mkcert
+$ node_modules/mkcert/src/cli.js create-ca
+$ node_modules/mkcert/src/cli.js create-cert
+```
+nuxt.config.jsに下記を追記
+```
+server: {
+  https: {
+    key: fs.readFileSync(path.resolve(__dirname, 'cert.key')),
+    cert: fs.readFileSync(path.resolve(__dirname, 'cert.crt'))
+  }
+},
+```
+
+wysiwygエディタの導入
+```
+npm install --save "@tinymce/tinymce-vue@^3"
+```

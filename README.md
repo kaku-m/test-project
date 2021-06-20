@@ -1,6 +1,20 @@
-# test-project
+# ローカル開発環境構築例（Windows）
 
-## Build Setup
+## 事前準備
+VirtualBoxのインストール
+https://www.virtualbox.org/
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```bash
 # install dependencies

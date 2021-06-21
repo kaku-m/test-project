@@ -144,10 +144,10 @@ $ exit
 
 ### インストールと画面操作
 ```
-git clone https://github.com/kaku-m/test-project.git
-cd test-project
-npm install
-npm run dev
+$ git clone https://github.com/kaku-m/test-project.git
+$ cd test-project
+$ npm install
+$ npm run dev
 ```
 https://192.168.33.10:3333/ にアクセス  
 画面右上の「ログイン」を押下  
@@ -166,7 +166,7 @@ https://192.168.33.10:3333/ にアクセス
 アップロードした画像を選択して「挿入」を押下  
 画面右上の「保存」を押下  
 
-編集　・・・編集ページに移動  
+編集　・・・編集ページに遷移  
 作成　・・・ページのタイトルを入力して子ページを作成する　※エラーチェック無し  
 移動　・・・親ページのIDを入力してページを移動する（子ページも全て）　※エラーチェック無し  
 削除　・・・子ページも全て削除する　※物理削除  
@@ -232,7 +232,7 @@ $ npm install --save express
 $ npm install --save mysql2
 $ npm install --save multer
 ```
-staticフォルダにimagesフォルダ作成  
+staticフォルダにimagesフォルダを作成  
 
 ### HTTPS通信の為
 ```
@@ -241,6 +241,11 @@ $ node_modules/mkcert/src/cli.js create-ca
 $ node_modules/mkcert/src/cli.js create-cert
 ```
 nuxt.config.jsに下記を追記  
+```
+import path from 'path'
+import fs from 'fs'
+```
+さらに追記  
 ```
 server: {
   https: {

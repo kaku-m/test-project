@@ -203,7 +203,7 @@ NUXT_HOST=192.168.33.10 NUXT_PORT=3333 nuxt
 ```
 nuxt.config.jsのaxiosに下記を追加  
 ```
-baseURL: 'https://192.168.33.13:3333/'
+baseURL: 'https://192.168.33.10:3333/'
 ```
 
 ### ログイン機能の為

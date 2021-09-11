@@ -259,3 +259,5 @@ server: {
 ```
 npm install --save "@tinymce/tinymce-vue@^3"
 ```
+
+[Google](https://www.google.co.jp/)
